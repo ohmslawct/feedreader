@@ -29,7 +29,7 @@ $(function() {
          allFeeds.forEach( function (feed){
            expect(feed.url).toBeDefined();
            expect(feed.url.length).not.toBe(0);
-         })
+         });
         });
 
         // loop through each feed  in the allFeeds object and ensure it has a name defined
@@ -39,7 +39,7 @@ $(function() {
             allFeeds.forEach(function(feed){
              expect(feed.name).toBeDefined();
              expect(feed.name.length).not.toBe(0);
-          })
+          });
         });
 
     });
@@ -81,7 +81,7 @@ $(function() {
          loadFeed(0, function(){
            done();
          });
-       })
+       });
 
       it('has a .entry element in the .feed container', function(done){
         let entryTest = document.querySelector('.entry');
