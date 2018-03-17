@@ -97,7 +97,7 @@ $(function() {
 
         /* when a new feed is loaded by the loadFeed function that the content actually changes.
          */
-         
+
       let myFeed1, myFeed2, myFeed1Url, myFeed2Url;
 
          beforeEach(function(done) {
