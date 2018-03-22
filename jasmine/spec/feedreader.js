@@ -38,7 +38,7 @@ $(function() {
             allFeeds.forEach(function(feed){
              // expect(feed.name).toBeDefined();
              // expect(feed.name.length).not.toBe(0);
-             expect(feed.url).toBeTruthy()
+             expect(feed.url).toBeTruthy();
           });
         });
 
