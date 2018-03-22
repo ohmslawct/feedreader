@@ -10,7 +10,7 @@
 Feed Reader is a web page page which displays RSS feeds.  
 
 ##### Loading Instructions
-A hosted version of the game is available at:
+A hosted version of the game is available at: https://ohmslawct.github.io/feedreader/
 To load locally, download the repository and launch *index.html* from your web browser.
 
 ##### Instructions
