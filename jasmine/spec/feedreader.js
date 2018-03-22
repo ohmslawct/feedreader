@@ -3,6 +3,12 @@
  * This is the spec for Jasmine. Tests are placed within the $() function as tests may require DOM elements.
  * $() ensures they don't run until the DOM is ready.
  * Use  console.info instead of console.log to log data to the javascript console.
+ *
+*/
+
+
+/*
+ * COMMENTED CODE IS KEPT INTENTIALLY FOR STUDENT LEARNING PURPOSES.
 */
 
 $(function() {
@@ -25,20 +31,14 @@ $(function() {
           }
         });
 
-        it('have non-empty URLs', function() {
-         allFeeds.forEach( function (feed){
-           expect(feed.url).toBeDefined();
-           expect(feed.url.length).not.toBe(0);
-         });
-        });
-
         // loop through each feed  in the allFeeds object and ensure it has a name defined
         // and that the name is not empty.
 
         it('have a name', function(){
             allFeeds.forEach(function(feed){
-             expect(feed.name).toBeDefined();
-             expect(feed.name.length).not.toBe(0);
+             // expect(feed.name).toBeDefined();
+             // expect(feed.name.length).not.toBe(0);
+             expect(feed.url).toBeTruthy()
           });
         });
 
@@ -59,13 +59,13 @@ $(function() {
 
       it('changes visibility when menu icon is clicked',
           function() {
-            theMenuIconLink = document.querySelector('.menu-icon-link');
+            let theMenuIconLink = document.querySelector('.menu-icon-link');
 
-            classCheck1 = document.querySelector('body').classList.contains('menu-hidden');
+            let classCheck1 = document.querySelector('body').classList.contains('menu-hidden');
             theMenuIconLink.click();
             expect(classCheck1).toBe(true);
 
-            classCheck2 = document.querySelector('body').classList.contains('menu-hidden');
+            let classCheck2 = document.querySelector('body').classList.contains('menu-hidden');
             theMenuIconLink.click();
             expect(classCheck2).toBe(false);
           });
@@ -84,7 +84,11 @@ $(function() {
        });
 
       it('has a .entry element in the .feed container', function(done){
-        let entryTest = document.querySelector('.entry');
+
+      //  $('.parent .child');
+      //  let entryTest = document.querySelector('.entry'); //old
+
+        let entryTest = $('.feed .entry');
       //  console.info('EntryTest', entryTest);
         expect(entryTest).not.toBe(null);
         done();
@@ -98,20 +102,18 @@ $(function() {
         /* when a new feed is loaded by the loadFeed function that the content actually changes.
          */
 
-      let myFeed1, myFeed2, myFeed1Url, myFeed2Url;
+        beforeEach(function(done) {
+          loadFeed(1, done);
+          myFeed1 = document.querySelectorAll('.entry-link')[0];
+          myFeed1Url = myFeed1.href;
 
-         beforeEach(function(done) {
-           myFeed1 = document.querySelector('.entry-link');
-           myFeed1Url = myFeed1.href;
-             loadFeed(1, done);
-             done();
-           });
-
-        it('has content changed', function(done){
+          loadFeed(1, done);
           myFeed2 = document.querySelectorAll('.entry-link')[1];
           myFeed2Url = myFeed2.href;
+           });
 
-          console.info(myFeed1Url, myFeed2Url);
+       it('has content changed', function(done){
+          console.info('1: ', myFeed1Url, '2:', myFeed2Url);
           expect(myFeed1Url).not.toBe(myFeed2Url);
           done();
         });
