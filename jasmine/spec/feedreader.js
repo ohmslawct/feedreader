@@ -47,8 +47,13 @@ $(function() {
 
     // ensure the menu element is hidden by default.
     it('is hidden by default', function() {
-      let menuTest = document.querySelector('body.menu-hidden');
-      expect(menuTest).not.toBe(null);
+      // let menuTest = document.querySelector('body.menu-hidden');
+      // expect(menuTest).not.toBe(null);
+
+      let menuTest = $('body').hasClass('menu-hidden');
+      expect(menuTest).toBe(true);
+
+
     });
 
     // the menu changes visibility when the menu icon is clicked.
@@ -102,9 +107,10 @@ $(function() {
     beforeEach(function(done) {
 
       loadFeed(0, function() {
-        myFeed1Url = document.querySelectorAll('.entry-link')[0].href;
+        myFeed1Url = document.querySelectorAll('.entry-link')[0].textContent;
+
         loadFeed(1, function() {
-          myFeed2Url = document.querySelectorAll('.entry-link')[0].href;
+          myFeed2Url = document.querySelectorAll('.entry-link')[0].textContent;
           done();
         });
       });
